@@ -7,9 +7,13 @@ export const ASSETS = {
   GOOGLE_PLAY: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1764187532/qovuzfabg48mfnnvux38.svg',
   APP_STORE: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1764187001/iyh4mljuwhxgeatmgfwb.webp',
   HERO: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767693013/fsyc24qtmxxooe8akpyi.avif',
+  HERO_MOBILE: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767702644/sid0l9ole53jopdm4qbc.jpg',
   PROMO_70: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767693441/ngoppvyif12qdwlsj5vp.avif',
+  PROMO_70_MOBILE: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767702644/p3kcuaglv539pg6xzdfr.jpg',
   PROMO_WINTER: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767693441/r7wc9fihdcws2tdtfgxc.avif',
-  PROMO_LAST: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767693440/srurwyr0ynlexna8orsw.avif'
+  PROMO_WINTER_MOBILE: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767702644/wjw7an00aytvb1whorif.jpg',
+  PROMO_LAST: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767693440/srurwyr0ynlexna8orsw.avif',
+  PROMO_LAST_MOBILE: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767702644/hc07cnbyv4xajgvghf2u.jpg'
 };
 
 export const TRENDS: CategoryItem[] = [
@@ -31,9 +35,9 @@ export const BRANDS: BrandItem[] = [
 export const SHOP_CATEGORIES: CategoryItem[] = [
   { title: 'Matching Sets', image: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767693440/jryfl3g6d3vhm0v5549e.avif', link: '#' },
   { title: 'Dresses', image: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767693439/afvyknpgrjveas2kacom.avif', link: '#' },
-  { title: 'Bottoms', image: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767693439/rxss4dbagwkqho77fwck.avif', link: '#' },
-  { title: 'Jackets & Coats', image: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767693439/yrogml0wa0pqy3khegeg.avif', link: '#' },
   { title: 'Tops', image: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767693439/lq4eeiin6smxo0sxmegt.avif', link: '#' },
+  { title: 'Bottoms', image: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767693439/rxss4dbagwkqho77fwck.avif', link: '#' },
+  { title: 'Jackets & Coats', image: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767693439/yrogml0wa0pqy3hegeg.avif', link: '#' },
   { title: 'Accessories', image: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767693439/wljbdxn3o4oiwgahohjo.avif', link: '#' },
   { title: 'Shoes', image: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767693439/xtfgximiuqs7h76wbhdy.avif', link: '#' },
 ];
@@ -44,7 +48,6 @@ export const DUMMY_PRODUCTS: Product[] = [
     name: "Moscow Fur Coat - Brown",
     price: 229400,
     image: "https://picsum.photos/400/600?random=1",
-    // Fix: Added missing required 'tags' property
     tags: [],
     isBogo: true,
     promoText: "Buy One, Get One FREE Dresses, Sets & Jumpsuits! Use Code: FREE"
@@ -64,7 +67,6 @@ export const DUMMY_PRODUCTS: Product[] = [
     price: 21400,
     originalPrice: 30600,
     image: "https://picsum.photos/400/600?random=3",
-    // Fix: Added missing required 'tags' property
     tags: [],
     isNew: true,
     promoText: "Up to 70% Off Sitewide! Prices as Marked"
@@ -74,7 +76,6 @@ export const DUMMY_PRODUCTS: Product[] = [
     name: "Magnolia Belted Midi Dress",
     price: 91800,
     image: "https://picsum.photos/400/600?random=4",
-    // Fix: Added missing required 'tags' property
     tags: [],
     isBogo: true,
     promoText: "Buy One, Get One FREE Dresses, Sets & Jumpsuits! Use Code: FREE"
