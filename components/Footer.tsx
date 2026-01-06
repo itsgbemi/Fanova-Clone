@@ -49,8 +49,8 @@ const Footer: React.FC = () => {
               ))}
             </div>
 
-            <h4 className="text-xs font-bold uppercase tracking-widest mb-6 text-center lg:text-start">Sign Up For Discounts + Updates</h4>
-            <div className="relative group max-w-md mx-auto lg:mx-0">
+            <h4 className="text-xs font-bold uppercase tracking-widest mb-6 text-left">Sign Up For Discounts + Updates</h4>
+            <div className="relative group max-w-md mx-0">
               <input 
                 type="text" 
                 placeholder="Phone Number or Email" 
@@ -60,15 +60,15 @@ const Footer: React.FC = () => {
                 <i className="fa-solid fa-chevron-right"></i>
               </button>
             </div>
-            <p className="mt-6 text-[10px] text-gray-500 leading-relaxed max-w-md mx-auto lg:mx-0 text-center lg:text-start">
+            <p className="mt-6 text-[10px] text-gray-500 leading-relaxed max-w-md text-left">
               By signing up for email, you agree to Fashion Nova's <span className="underline cursor-pointer">Terms of Service</span> and <span className="underline cursor-pointer">Privacy Policy</span>.
               <br/><br/>
-              By submitting your phone number, you agree to receive recurring automated promotional and personalized marketing text messages (e.g. cart reminders). Consent is not a condition of purchase.
+              By submitting your phone number, you agree to receive recurring automated promotional and personalized marketing text messages (e.g. cart reminders) from Fashion Nova at the cell number used when signing up. Consent is not a condition of any purchase. Reply HELP for help and STOP to cancel. Msg frequency varies. Msg & data rates may apply. By submitting your phone number, and signing up for texts, you also agree to our <span className="underline">Terms & Privacy</span>.
             </p>
           </div>
 
-          {/* App Download area */}
-          <div className="lg:col-span-1 lg:order-first">
+          {/* App Download area - Hidden on mobile as per request */}
+          <div className="hidden lg:block lg:col-span-1 lg:order-first">
             <h4 className="text-xs font-bold uppercase tracking-widest mb-6 text-center lg:text-start">Shop Faster With The App</h4>
             <div className="flex flex-row items-center gap-3 justify-center lg:justify-start grayscale opacity-50 hover:opacity-100 transition-opacity">
               <a href="#" className="w-24 md:w-28">
@@ -82,7 +82,7 @@ const Footer: React.FC = () => {
 
           {/* Nav Links - Mobile Accordion */}
           <div className="lg:col-span-3 grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-8">
-            {sections.map(section => (
+            {sections.slice(0, 3).map(section => (
               <div key={section.id} className="border-b border-zinc-800 lg:border-none">
                 <button 
                   onClick={() => toggleSection(section.id)}
@@ -105,15 +105,28 @@ const Footer: React.FC = () => {
                 </ul>
               </div>
             ))}
+            {/* Display Legal section on desktop */}
+            <div className="hidden lg:block">
+              <h4 className="text-xs font-bold uppercase tracking-widest mb-6">Legal</h4>
+              <ul className="space-y-4">
+                {sections[3].links.map(link => (
+                  <li key={link}>
+                    <a href="#" className="text-[13px] text-gray-400 hover:text-white transition-colors">
+                      {link}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[11px] text-gray-500">
+          <p className="text-[11px] text-gray-500 w-full text-left md:w-auto">
             © 2026 Fashion Nova, LLC All Rights Reserved
           </p>
-          <div className="flex flex-wrap justify-center gap-4 text-[11px] text-gray-500">
+          <div className="hidden lg:flex flex-wrap justify-center gap-4 text-[11px] text-gray-500">
             <a href="#" className="hover:text-white">Your privacy choices <span className="bg-blue-600 px-1 rounded-full text-[8px] text-white">✓X</span></a>
           </div>
         </div>
