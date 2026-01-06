@@ -8,6 +8,7 @@ export const ASSETS = {
   APP_STORE: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1764187001/iyh4mljuwhxgeatmgfwb.webp',
   HERO: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767693013/fsyc24qtmxxooe8akpyi.avif',
   HERO_MOBILE: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767702644/sid0l9ole53jopdm4qbc.jpg',
+  PROMO_BANNER_IMG: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767715457/nfvlxlg9l1nzfxlvmnpi.avif',
   PROMO_70: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767693441/ngoppvyif12qdwlsj5vp.avif',
   PROMO_70_MOBILE: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767702644/p3kcuaglv539pg6xzdfr.jpg',
   PROMO_WINTER: 'https://res.cloudinary.com/dqhawdcol/image/upload/v1767693441/r7wc9fihdcws2tdtfgxc.avif',

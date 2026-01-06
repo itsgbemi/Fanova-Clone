@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ASSETS } from '../constants';
 
 const Icons = {
@@ -33,7 +33,7 @@ const Icons = {
   ),
   Camera: () => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M21.7188 7.79563C21.4128 7.03043 20.6603 6.4948 19.7931 6.4948H16.5793C16.286 6.4948 16.0054 6.29075 15.9289 5.99743L15.8014 5.52556C15.5335 4.62008 14.6918 3.98242 13.7481 3.98242H10.2665C9.32274 3.98242 8.48103 4.62008 8.21321 5.52556L8.08568 5.98467C8.00916 6.26524 7.72859 6.48205 7.43527 6.48205H4.24697C3.09918 6.48205 2.1682 7.38752 2.11719 8.52256V18.9419C2.1682 20.0769 3.09918 20.9824 4.24697 20.9824H15.2785C15.6738 20.9824 16.0054 20.6508 16.0054 20.2555C16.0054 19.8601 15.6738 19.5286 15.2785 19.5286H4.25972C3.87713 19.5286 3.57105 19.2225 3.57105 18.8399V8.63734C3.57105 8.25474 3.87713 7.94866 4.25972 7.94866H7.43527C8.379 7.94866 9.22071 7.311 9.48853 6.40553L9.61606 5.94641C9.69258 5.66584 9.97315 5.46179 10.2665 5.46179H13.7481C14.0414 5.46179 14.322 5.66584 14.3985 5.94641L14.526 6.41828C14.7173 7.08145 15.2657 7.94866 16.1202 7.94866L19.1427 7.92316H19.7804C20.1502 7.92316 20.4435 8.21648 20.4435 8.57357V14.3635C20.4435 14.7589 20.7751 15.0904 21.1704 15.0904C21.5658 15.0904 21.8974 14.7589 21.8974 14.3635V8.63734C21.8974 8.34401 21.8336 8.05069 21.7188 7.79563Z" fill="var(--neutral-900)" />
+      <path d="M21.7188 7.79563C21.4128 7.03043 20.6603 6.4948 19.7931 6.4948H16.5793C16.286 6.4948 16.0054 6.29075 15.9289 5.99743L15.8014 5.52556C15.5335 4.62008 14.6918 3.98242 13.7481 3.98242H10.2665C9.32274 3.98242 8.48103 4.62008 8.21321 5.52556L8.08568 5.98467C8.00916 6.26524 7.72859 6.48205 7.43527 6.48205H4.24697C3.09918 6.48205 2.1682 7.38752 2.11719 8.52256V18.9419C2.1682 20.0769 3.09918 20.9824 4.24697 20.9824H15.2785C15.6738 20.9824 16.0054 20.6508 16.0054 20.2555C16.0054 19.8601 15.6738 19.5286 15.2785 19.5286H4.25972C3.87713 19.5286 3.57105 19.2225 3.57105 18.8399V8.63734C3.57105 8.25474 3.87713 7.94866 4.25972 7.94866H7.43527C8.379 7.94866 9.22071 7.311 9.48853 6.40553L9.61606 5.94641C9.69258 5.66584 9.97315 5.46179 10.2665 5.46179H13.7481C14.0414 5.46179 14.322 5.66584 14.3985 5.94641L14.3985 5.94641L14.526 6.41828C14.7173 7.08145 15.2657 7.94866 16.1202 7.94866L19.1427 7.92316H19.7804C20.1502 7.92316 20.4435 8.21648 20.4435 8.57357V14.3635C20.4435 14.7589 20.7751 15.0904 21.1704 15.0904C21.5658 15.0904 21.8974 14.7589 21.8974 14.3635V8.63734C21.8974 8.34401 21.8336 8.05069 21.7188 7.79563Z" fill="var(--neutral-900)" />
       <path d="M12.0018 8.85547C9.65517 8.85547 7.74219 10.7684 7.74219 13.115C7.74219 15.4616 9.65517 17.3746 12.0018 17.3746C14.3483 17.3746 16.2613 15.4616 16.2613 13.115C16.2613 10.7684 14.3483 8.85547 12.0018 8.85547ZM12.0018 15.908C10.4586 15.908 9.2088 14.6454 9.2088 13.1023C9.2088 11.5591 10.4586 10.2966 12.0018 10.2966C13.5449 10.2966 14.7947 11.5591 14.7947 13.1023C14.7947 14.6454 13.5449 15.908 12.0018 15.908Z" fill="var(--neutral-900)" />
       <path d="M21.7062 17.3481C20.839 17.2078 20.2523 16.9017 19.8442 16.4426C19.4361 15.9708 19.1938 15.3076 19.079 14.4149V14.3766C19.0408 14.2873 18.9643 14.2363 18.875 14.2363C18.773 14.2363 18.6837 14.3128 18.6709 14.4149C18.5562 15.2693 18.3394 15.9325 17.944 16.4044C17.5487 16.8762 16.9493 17.2078 16.0438 17.3481C15.9418 17.3609 15.8652 17.4501 15.8652 17.5522C15.8652 17.6542 15.9418 17.7435 16.0438 17.7562C16.911 17.8965 17.4976 18.2026 17.9057 18.6617C18.3138 19.1336 18.5562 19.7967 18.6709 20.6894C18.6837 20.7915 18.773 20.868 18.875 20.868C18.977 20.868 19.0663 20.7915 19.079 20.6894C19.1938 19.7967 19.4361 19.1336 19.8442 18.6617C20.2523 18.1898 20.839 17.8837 21.7062 17.7562C21.8082 17.7435 21.8847 17.6542 21.8847 17.5522C21.8847 17.4501 21.8082 17.3609 21.7062 17.3481Z" fill="var(--neutral-900)" />
     </svg>
@@ -42,35 +42,50 @@ const Icons = {
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   const mainCategories = ['WOMEN', 'PLUS+CURVE', 'MEN', 'KIDS', 'BEAUTY'];
-  const subCategories = [
-    { name: 'New In', color: 'text-black' },
-    { name: 'Clothing', color: 'text-black' },
-    { name: 'Novadeals', color: 'text-black' },
-    { name: 'Sale', color: 'text-red-600' },
-    { name: 'Formal Shop', color: 'text-black' },
-    { name: 'Dresses', color: 'text-black' },
-    { name: 'Matching Sets', color: 'text-black' },
-    { name: 'Tops', color: 'text-black' },
-    { name: 'Jeans', color: 'text-black' },
-    { name: 'Sweaters', color: 'text-black' },
-    { name: 'Shoes', color: 'text-black' },
-    { name: 'Bottoms', color: 'text-black' },
-    { name: 'Jumpsuits', color: 'text-black' },
-    { name: 'Lingerie & Sleep', color: 'text-black' },
-    { name: 'Accessories', color: 'text-black' },
-    { name: 'Loungewear', color: 'text-black' },
-    { name: 'Nova Luxe', color: 'text-black' },
+  const navItems = [
+    'NEW IN', 'CLOTHING', 'NOVADEALS', 'SALE', 'FORMAL SHOP', 
+    'DRESSES', 'MATCHING SETS', 'TOPS', 'JEANS', 'JACKETS', 
+    'SWEATERS', 'SHOES', 'BOTTOMS', 'JUMPSUITS', 'LINGERIE & SLEEP', 
+    'ACCESSORIES', 'LOUNGEWEAR', 'NOVA LUXE'
   ];
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      // Use a binary state for arrows as requested: Right on default, Left on end.
+      // Both are not shown at the same time.
+      if (scrollLeft + clientWidth >= scrollWidth - 5) {
+        setShowRightArrow(false);
+      } else {
+        setShowRightArrow(true);
+      }
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+  };
+
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+  };
 
   return (
     <>
       <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
-        {/* Top Bar */}
+        {/* Top Bar Desktop */}
         <div className="max-w-[1600px] mx-auto px-4 h-14 md:h-16 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2 md:gap-8 h-full">
+          <div className="flex items-center gap-8 h-full">
             <a href="/" className="shrink-0">
-              <img src={ASSETS.LOGO} alt="Fashion Nova" className="h-4 md:h-7" />
+              <img src={ASSETS.LOGO} alt="Fashion Nova" className="h-4 md:h-6" />
             </a>
             
             <div className="hidden lg:flex items-center h-full gap-6">
@@ -78,90 +93,133 @@ const Navbar: React.FC = () => {
                 <a 
                   key={cat} 
                   href="#" 
-                  className={`text-[13px] font-bold tracking-wider relative h-full flex items-center group ${idx === 0 ? 'text-black' : 'text-gray-500 hover:text-black'}`}
+                  className={`text-[12px] font-black tracking-widest relative h-full flex items-center group transition-colors ${idx === 0 ? 'text-black' : 'text-gray-400 hover:text-black'}`}
                 >
                   {cat}
-                  {idx === 0 && <span className="absolute bottom-0 left-0 w-full h-0.5 bg-black"></span>}
+                  {idx === 0 && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-black"></span>}
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Desktop Search */}
-          <div className="flex-1 max-w-xl hidden md:flex items-center bg-gray-100 rounded-full px-4 py-2 border border-transparent focus-within:border-gray-300 transition-all">
-            <span className="flex items-center"><Icons.Search /></span>
-            <input 
-              type="text" 
-              placeholder="Search within Women's Clothing" 
-              className="bg-transparent w-full text-sm outline-none px-2"
-            />
-            <button className="ml-2 text-gray-500 hover:text-black">
-              <Icons.Camera />
-            </button>
+          {/* Search Section Desktop */}
+          <div className="flex-1 max-w-[500px] hidden md:flex items-center gap-4">
+            <div className="flex-1 flex items-center bg-transparent border border-[var(--fn-border)] rounded-full px-4 py-2 transition-all">
+              <span className="flex items-center scale-90 opacity-60"><Icons.Search /></span>
+              <input 
+                type="text" 
+                placeholder="Search within Women's Clothing" 
+                className="bg-transparent w-full text-sm outline-none px-2 placeholder-gray-400"
+              />
+              <button className="opacity-60 hover:opacity-100 transition-opacity">
+                <Icons.Camera />
+              </button>
+            </div>
+            
+            {/* NG Indicator */}
+            <div className="flex items-center gap-1.5 cursor-pointer group">
+              <span className="text-[11px] font-black tracking-widest text-gray-800">NG</span>
+              <i className="fa-solid fa-chevron-down text-[8px] text-gray-400 group-hover:text-black"></i>
+            </div>
           </div>
 
           {/* Icons in order: Profile, Wishlist, Cart, Menu (Menu only on mobile) */}
           <div className="flex items-center gap-4 md:gap-5">
-            <button className="text-[20px] text-gray-800 hover:text-black transition-colors">
-              <Icons.Profile />
-            </button>
-            <button className="text-[20px] text-gray-800 hover:text-black transition-colors">
-              <Icons.Wishlist />
-            </button>
-            <button className="text-[20px] text-gray-800 hover:text-black transition-colors relative">
-              <Icons.Cart />
-            </button>
+            <button className="p-1 hover:scale-105 transition-transform"><Icons.History /></button>
+            <button className="p-1 hover:scale-105 transition-transform"><Icons.Profile /></button>
+            <button className="p-1 hover:scale-105 transition-transform"><Icons.Wishlist /></button>
+            <button className="p-1 hover:scale-105 transition-transform relative"><Icons.Cart /></button>
             <button 
               onClick={() => setIsMenuOpen(true)}
-              className="lg:hidden text-[20px] text-gray-800 hover:text-black transition-colors"
+              className="lg:hidden p-1 text-[20px] text-gray-800"
             >
               <i className="fa-solid fa-bars"></i>
             </button>
           </div>
         </div>
 
-        {/* Mobile Search Bar - Before Shipping Promotion */}
-        <div className="md:hidden px-4 pb-3">
-          <div className="flex items-center bg-gray-100 rounded-full px-4 py-2 border border-gray-200">
-            <Icons.Search />
-            <input 
-              type="text" 
-              placeholder="Search within Women's Clothing" 
-              className="bg-transparent w-full text-sm outline-none px-2"
-            />
-            <Icons.Camera />
-          </div>
-        </div>
-
-        {/* Desktop Tabs */}
-        <div className="hidden md:block border-t border-gray-100 bg-white">
-          <div className="max-w-[1600px] mx-auto flex items-center overflow-x-auto no-scrollbar whitespace-nowrap px-4 py-3">
-            {subCategories.slice(0, 15).map((item, idx) => (
+        {/* Mobile Subheader - Nav items row above search */}
+        <div className="md:hidden border-t border-gray-100 bg-white">
+          <div className="flex items-center overflow-x-auto no-scrollbar py-2.5 px-4 gap-6">
+            {mainCategories.map((cat, idx) => (
               <a 
-                key={idx} 
+                key={cat} 
                 href="#" 
-                className={`text-[11px] font-bold tracking-widest px-3 hover:underline underline-offset-4 ${item.color}`}
+                className={`text-[11px] font-black tracking-[0.15em] whitespace-nowrap transition-colors ${idx === 0 ? 'text-black border-b-2 border-black pb-0.5' : 'text-gray-400'}`}
               >
-                {item.name.toUpperCase()}
+                {cat}
               </a>
             ))}
           </div>
         </div>
 
-        {/* Free Shipping Promo Bar */}
-        <div className="bg-black text-white text-center py-2 md:py-3 text-[10px] md:text-[12px] font-bold tracking-widest relative">
-          <div className="max-w-[1600px] mx-auto px-4 flex items-center justify-between">
-            <span>FREE 1-DAY SHIPPING ON ORDERS OVER $100</span>
-            <a href="#" className="hidden sm:flex items-center gap-1 hover:underline">
-              SHOP NOW <i className="fa-solid fa-chevron-right text-[8px]"></i>
-            </a>
+        {/* Mobile Search Bar */}
+        <div className="md:hidden px-4 pb-3">
+          <div className="flex items-center bg-transparent border border-[var(--fn-border)] rounded-full px-4 py-2">
+            <Icons.Search />
+            <input 
+              type="text" 
+              placeholder="Search within Women's Clothing" 
+              className="bg-transparent w-full text-sm outline-none px-2 placeholder-gray-400"
+            />
+            <Icons.Camera />
           </div>
+        </div>
+
+        {/* Navigation Category Row with Arrows (Desktop) */}
+        <div className="hidden md:block border-t border-gray-100 bg-white relative">
+          <div className="max-w-[1600px] mx-auto px-4 relative flex items-center h-11">
+            
+            {/* Left Arrow - Hidden on default, shows at end */}
+            {!showRightArrow && (
+              <button 
+                onClick={scrollLeft}
+                className="absolute left-0 z-10 bg-white/90 p-2 text-gray-400 hover:text-black transition-colors"
+              >
+                <i className="fa-solid fa-chevron-left text-sm"></i>
+              </button>
+            )}
+
+            <div 
+              ref={scrollRef}
+              onScroll={handleScroll}
+              className="flex items-center overflow-x-auto no-scrollbar whitespace-nowrap h-full gap-6 w-full"
+            >
+              {navItems.map((item, idx) => (
+                <a 
+                  key={idx} 
+                  href="#" 
+                  className={`text-[10px] font-black tracking-widest hover:underline underline-offset-[10px] decoration-1 transition-colors ${item === 'SALE' ? 'text-red-600' : 'text-gray-900'}`}
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+
+            {/* Right Arrow - Visible on default, hidden at end */}
+            {showRightArrow && (
+              <button 
+                onClick={scrollRight}
+                className="absolute right-0 z-10 bg-white/90 p-2 text-gray-400 hover:text-black transition-colors"
+              >
+                <i className="fa-solid fa-chevron-right text-sm"></i>
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Promotion Image Tab */}
+        <div className="w-full">
+          <img 
+            src={ASSETS.PROMO_BANNER_IMG} 
+            alt="Promotion" 
+            className="w-full h-auto object-cover block"
+          />
         </div>
       </nav>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Menu Drawer (Same as before but with order updated) */}
       <div className={`fixed inset-0 z-[60] bg-white transition-transform duration-300 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        {/* Drawer Header - Logo, Search, History, Close */}
         <div className="flex items-center justify-between px-4 h-14 border-b border-gray-100">
           <img src={ASSETS.LOGO} alt="Fashion Nova" className="h-4" />
           <div className="flex items-center gap-4">
@@ -172,53 +230,31 @@ const Navbar: React.FC = () => {
             </button>
           </div>
         </div>
-
-        {/* Category Tabs */}
         <div className="flex border-b border-gray-100 overflow-x-auto no-scrollbar">
           {mainCategories.map((cat, idx) => (
             <button 
               key={cat}
-              className={`flex-none px-4 py-3 text-[11px] font-bold tracking-widest whitespace-nowrap ${idx === 0 ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
+              className={`flex-none px-4 py-4 text-[11px] font-black tracking-widest whitespace-nowrap ${idx === 0 ? 'text-black border-b-2 border-black' : 'text-gray-400'}`}
             >
               {cat}
             </button>
           ))}
         </div>
-
-        {/* Scrollable Content */}
         <div className="overflow-y-auto h-[calc(100vh-100px)] pb-10">
-          {/* Promo Banner inside menu */}
-          <div className="bg-black text-white py-4 px-8 text-center text-[13px] font-bold leading-tight">
+          <div className="bg-black text-white py-4 px-8 text-center text-[13px] font-black leading-tight uppercase tracking-tight">
             Buy One, Get One FREE Dresses, Sets & Jumpsuits! Use Code: <span className="bg-red-700 px-1">FREE</span>
           </div>
-
-          {/* List items */}
           <div className="flex flex-col">
-            {subCategories.map((item, idx) => (
+            {navItems.map((name, idx) => (
               <a 
                 key={idx} 
                 href="#" 
-                className={`flex items-center justify-between px-4 py-4 border-b border-gray-50 text-[14px] font-bold tracking-tight ${item.color}`}
+                className={`flex items-center justify-between px-4 py-4 border-b border-gray-50 text-[13px] font-black tracking-tight ${name === 'SALE' ? 'text-red-600' : 'text-black'}`}
               >
-                {item.name}
+                {name}
                 <i className="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
               </a>
             ))}
-          </div>
-
-          {/* Location / Bottom links */}
-          <div className="bg-gray-50 p-4 pb-20">
-             <div className="text-[11px] font-bold text-gray-400 mb-4 uppercase tracking-widest">Location Settings</div>
-             <button className="flex items-center justify-between w-full p-4 bg-white rounded-sm border border-gray-100">
-               <div className="flex items-center gap-3">
-                 <i className="fa-solid fa-dollar-sign text-gray-400 border border-gray-400 rounded-full w-5 h-5 flex items-center justify-center text-[10px]"></i>
-                 <span className="text-sm font-bold">Region/Currency</span>
-               </div>
-               <div className="flex items-center gap-2">
-                 <span className="text-sm text-gray-500">Nigeria NGN ₦</span>
-                 <i className="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
-               </div>
-             </button>
           </div>
         </div>
       </div>

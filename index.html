@@ -5,29 +5,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fashion Nova | Fashion Online for Women, Men, Kids & Beauty</title>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/dqhawdcol/image/upload/v1767709599/wqoxxtgwjgh5zqjheb6f.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/dqhawdcol/image/upload/v1767709683/nnntdj0mkmpeks8c5otp.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="https://res.cloudinary.com/dqhawdcol/image/upload/v1767709598/k9uvfn9ymukdgdv6t5xp.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="https://res.cloudinary.com/dqhawdcol/image/upload/v1767709599/ooj1cn0fgz0ytxz59u5l.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/dqhawdcol/image/upload/v1767709684/jecijjpnz4bmdkanvfjw.png" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+      /* Using a high-quality geometric sans-serif as a proxy for Proxima Nova since it's not on Google Fonts */
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+      
       :root {
         --neutral-900: #000000;
         --neutral-500: #737373;
         --neutral-100: #f5f5f5;
+        --fn-border: #f3f4f6; /* Current search bar bg color */
       }
+      
       body {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Montserrat', 'Inter', sans-serif;
         margin: 0;
         padding: 0;
+        -webkit-font-smoothing: antialiased;
       }
+      
       .no-scrollbar::-webkit-scrollbar {
         display: none;
       }
+      
       .no-scrollbar {
         -ms-overflow-style: none;
         scrollbar-width: none;
       }
     </style>
-  <script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
@@ -38,10 +53,9 @@
   }
 }
 </script>
-</head>
+  </head>
   <body>
     <div id="root"></div>
-    <!-- Vite entry point -->
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>
