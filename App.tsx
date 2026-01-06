@@ -50,7 +50,7 @@ const App: React.FC = () => {
 
         {/* TREND REPORT Section */}
         <section className="max-w-[1600px] mx-auto px-4 pt-8 pb-4 w-full">
-          <h2 className="text-xl md:text-2xl font-black uppercase mb-6 tracking-tight">TREND REPORT</h2>
+          <h2 className="text-xl md:text-2xl font-black uppercase mb-6 tracking-tight text-black">TREND REPORT</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-x-3 md:gap-x-4 gap-y-8">
             {TRENDS.map((item, idx) => (
               <a key={idx} href={item.link} className="group cursor-pointer">
@@ -62,10 +62,10 @@ const App: React.FC = () => {
                   />
                 </div>
                 <div className="flex items-center justify-between">
-                  <h3 className="text-xs md:text-base font-bold uppercase tracking-tight">
+                  <h3 className="text-xs md:text-base font-bold uppercase tracking-tight text-black">
                     {item.title}
                   </h3>
-                  <i className="fa-solid fa-chevron-right text-[10px]"></i>
+                  <i className="fa-solid fa-chevron-right text-[10px] text-black"></i>
                 </div>
               </a>
             ))}
@@ -82,7 +82,7 @@ const App: React.FC = () => {
 
         {/* Shop By Brand */}
         <section className="max-w-[1600px] mx-auto px-4 pt-8 pb-4 w-full">
-          <h2 className="text-xl md:text-2xl font-black uppercase mb-6 tracking-tight">Shop By Brand</h2>
+          <h2 className="text-xl md:text-2xl font-black uppercase mb-6 tracking-tight text-black">Shop By Brand</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
             {BRANDS.map((brand, idx) => (
               <a key={idx} href="#" className="relative overflow-hidden group cursor-pointer leading-[0]">
@@ -112,9 +112,8 @@ const App: React.FC = () => {
 
         {/* SHOP BY CATEGORY Section */}
         <section className="max-w-[1600px] mx-auto px-4 pt-8 pb-4 w-full">
-          <h2 className="text-xl md:text-2xl font-black uppercase mb-6 tracking-tight">SHOP BY CATEGORY</h2>
+          <h2 className="text-xl md:text-2xl font-black uppercase mb-6 tracking-tight text-black">SHOP BY CATEGORY</h2>
           
-          {/* Grouped Layout: Desktop has specific grid, Mobile stacks based on category count */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
             {SHOP_CATEGORIES.map((cat, idx) => (
               <div 
@@ -126,7 +125,6 @@ const App: React.FC = () => {
                   className="w-full h-auto block transition-transform duration-700 group-hover:scale-105" 
                   alt={cat.title} 
                 />
-                {/* Text close to bottom overlay */}
                 <div className="absolute bottom-4 left-0 right-0 text-center pointer-events-none">
                   <span className="text-white text-[11px] md:text-sm font-bold bg-black/40 backdrop-blur-sm px-3 py-1 uppercase tracking-widest leading-normal inline-block">
                     {cat.title}
@@ -139,7 +137,7 @@ const App: React.FC = () => {
 
         {/* Shop The Latest */}
         <section className="max-w-[1600px] mx-auto px-4 pt-8 pb-16 w-full">
-          <h2 className="text-xl md:text-2xl font-black uppercase mb-6 tracking-tight">Shop The Latest</h2>
+          <h2 className="text-xl md:text-2xl font-black uppercase mb-6 tracking-tight text-black">Shop The Latest</h2>
           
           <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-8">
             {filters.map(f => (
