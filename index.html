@@ -16,18 +16,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
-      /* Using a high-quality geometric sans-serif as a proxy for Proxima Nova since it's not on Google Fonts */
-      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
       
       :root {
         --neutral-900: #000000;
         --neutral-500: #737373;
         --neutral-100: #f5f5f5;
-        --fn-border: #f3f4f6; /* Current search bar bg color */
+        --fn-border: #f3f4f6;
       }
       
       body {
-        font-family: 'Montserrat', 'Inter', sans-serif;
+        font-family: 'Inter', sans-serif;
         margin: 0;
         padding: 0;
         -webkit-font-smoothing: antialiased;
@@ -42,18 +41,18 @@
         scrollbar-width: none;
       }
     </style>
-    <script type="importmap">
+  <script type="importmap">
 {
   "imports": {
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "vite": "https://esm.sh/vite@^7.3.0",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "vite": "https://esm.sh/vite@^7.3.0",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+    "react": "https://esm.sh/react@^19.2.3"
   }
 }
 </script>
-  </head>
+</head>
   <body>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>

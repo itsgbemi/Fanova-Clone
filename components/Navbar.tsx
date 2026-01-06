@@ -56,8 +56,6 @@ const Navbar: React.FC = () => {
   const handleScroll = () => {
     if (scrollRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      // Use a binary state for arrows as requested: Right on default, Left on end.
-      // Both are not shown at the same time.
       if (scrollLeft + clientWidth >= scrollWidth - 5) {
         setShowRightArrow(false);
       } else {
@@ -123,9 +121,9 @@ const Navbar: React.FC = () => {
             </div>
           </div>
 
-          {/* Icons in order: Profile, Wishlist, Cart, Menu (Menu only on mobile) */}
+          {/* Icons in order: History (hide mobile), Profile, Wishlist, Cart, Menu (Menu only on mobile) */}
           <div className="flex items-center gap-4 md:gap-5">
-            <button className="p-1 hover:scale-105 transition-transform"><Icons.History /></button>
+            <button className="hidden md:block p-1 hover:scale-105 transition-transform"><Icons.History /></button>
             <button className="p-1 hover:scale-105 transition-transform"><Icons.Profile /></button>
             <button className="p-1 hover:scale-105 transition-transform"><Icons.Wishlist /></button>
             <button className="p-1 hover:scale-105 transition-transform relative"><Icons.Cart /></button>
@@ -218,13 +216,13 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu Drawer (Same as before but with order updated) */}
+      {/* Mobile Menu Drawer */}
       <div className={`fixed inset-0 z-[60] bg-white transition-transform duration-300 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex items-center justify-between px-4 h-14 border-b border-gray-100">
           <img src={ASSETS.LOGO} alt="Fashion Nova" className="h-4" />
           <div className="flex items-center gap-4">
             <button className="text-xl p-1"><Icons.Search /></button>
-            <button className="text-xl p-1"><Icons.History /></button>
+            {/* Hide history on mobile as requested */}
             <button onClick={() => setIsMenuOpen(false)} className="text-2xl p-1 text-gray-500 hover:text-black">
               <i className="fa-solid fa-xmark"></i>
             </button>

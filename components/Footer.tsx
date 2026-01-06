@@ -36,10 +36,10 @@ const Footer: React.FC = () => {
     <footer className="bg-black text-white pt-10 md:pt-20 pb-10">
       <div className="max-w-[1600px] mx-auto px-4">
         
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-4 mb-16">
+        {/* Main Footer Grid Layout Adjusted */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 mb-16">
           
-          {/* Column 1: App Download (Larger on desktop) */}
+          {/* Column 1: App Download (Space but less than Col 4) */}
           <div className="lg:col-span-3">
             <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-8 text-left">Shop Faster With The App</h4>
             <div className="flex flex-row items-center gap-3 lg:gap-4 justify-start">
@@ -52,23 +52,40 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Desktop Only Nav Columns */}
-          <div className="hidden lg:grid lg:col-span-4.5 lg:grid-cols-3 gap-4">
-            {sections.slice(0, 3).map(section => (
-              <div key={section.id}>
-                <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-8">{section.title}</h4>
-                <ul className="space-y-4">
-                  {section.links.map(link => (
-                    <li key={link}>
-                      <a href="#" className="text-[13px] text-gray-400 hover:text-white transition-colors">{link}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          {/* Desktop Only Nav Columns: Slim (Col 2 & 3) */}
+          <div className="hidden lg:block lg:col-span-1.5">
+            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-8">{sections[0].title}</h4>
+            <ul className="space-y-4">
+              {sections[0].links.map(link => (
+                <li key={link}>
+                  <a href="#" className="text-[13px] text-gray-400 hover:text-white transition-colors">{link}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div className="hidden lg:block lg:col-span-1.5">
+            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-8">{sections[1].title}</h4>
+            <ul className="space-y-4">
+              {sections[1].links.map(link => (
+                <li key={link}>
+                  <a href="#" className="text-[13px] text-gray-400 hover:text-white transition-colors">{link}</a>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8">
+              <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-4">{sections[2].title}</h4>
+              <ul className="space-y-4">
+                {sections[2].links.map(link => (
+                  <li key={link}>
+                    <a href="#" className="text-[13px] text-gray-400 hover:text-white transition-colors">{link}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* Mobile Accordions (Including Legal) */}
+          {/* Mobile Accordions */}
           <div className="lg:hidden flex flex-col w-full">
             {sections.map(section => (
               <div key={section.id} className="border-b border-zinc-800">
@@ -92,8 +109,8 @@ const Footer: React.FC = () => {
             ))}
           </div>
 
-          {/* Last Column: Socials + Signup (Slightly larger but not same as C1) */}
-          <div className="lg:col-span-4.5 flex flex-col">
+          {/* Last Column: Sign Up (Most space) */}
+          <div className="lg:col-span-6 flex flex-col">
             <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-8">Sign Up For Discounts + Updates</h4>
             <div className="relative mb-6">
               <input 
@@ -111,7 +128,6 @@ const Footer: React.FC = () => {
               By submitting your phone number, you agree to receive recurring automated marketing messages. Consent is not a condition of purchase. Reply STOP to cancel.
             </p>
             
-            {/* Social Icons at the bottom of signup section */}
             <div className="flex items-center gap-7">
               {['instagram', 'tiktok', 'youtube', 'snapchat', 'facebook', 'pinterest'].map(icon => (
                 <a key={icon} href="#" className="text-xl text-gray-400 hover:text-white transition-colors">
@@ -129,7 +145,6 @@ const Footer: React.FC = () => {
             © 2026 Fashion Nova, LLC All Rights Reserved
           </p>
           
-          {/* Links only visible on Desktop */}
           <div className="hidden lg:flex flex-wrap items-center gap-6 text-[11px] text-gray-500 font-medium">
             <a href="#" className="hover:text-white transition-colors">Promo T&Cs</a>
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>

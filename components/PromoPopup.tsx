@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { ASSETS } from '../constants';
 
 interface PromoPopupProps {
@@ -7,9 +7,6 @@ interface PromoPopupProps {
 }
 
 const PromoPopup: React.FC<PromoPopupProps> = ({ onClose }) => {
-  const [selectedPref, setSelectedPref] = useState('Women');
-  const prefs = ['Women', 'Men', 'Curve', 'Kids', 'Beauty'];
-
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4">
       <div className="relative bg-white max-w-4xl w-full flex flex-col md:flex-row overflow-hidden rounded-sm shadow-2xl">
@@ -24,54 +21,35 @@ const PromoPopup: React.FC<PromoPopupProps> = ({ onClose }) => {
         <div className="flex-1 p-8 md:p-12 flex flex-col items-center justify-center text-center">
           <img src={ASSETS.LOGO} alt="Fashion Nova" className="h-8 mb-8" />
           
-          <p className="text-sm font-bold tracking-widest mb-2">GET YOUR ENTIRE ORDER FOR</p>
-          <h2 className="text-4xl md:text-6xl font-black mb-4 uppercase leading-none">Extra 10% OFF</h2>
-          <p className="text-gray-600 mb-8">Just enter your email address</p>
-
-          <div className="w-full mb-6">
-            <p className="text-xs font-bold uppercase mb-3">Choose your preferences:</p>
-            <div className="flex flex-wrap justify-center gap-2">
-              {prefs.map(p => (
-                <button
-                  key={p}
-                  onClick={() => setSelectedPref(p)}
-                  className={`px-4 py-1.5 border rounded-full text-sm font-medium transition-all ${
-                    selectedPref === p 
-                    ? 'bg-black text-white border-black' 
-                    : 'bg-white text-gray-800 border-gray-300 hover:border-black'
-                  }`}
-                >
-                  {p}
-                </button>
-              ))}
-            </div>
+          <p className="text-sm font-black tracking-widest mb-4 uppercase">Project Disclaimer</p>
+          <h2 className="text-2xl md:text-3xl font-black mb-6 uppercase leading-tight">Clone Portfolio Project</h2>
+          
+          <div className="text-gray-600 space-y-4 text-sm leading-relaxed mb-8">
+            <p>
+              This website is a highly-fidelity <strong>Clone/Portfolio Project</strong> designed to demonstrate UI/UX development skills. It is not affiliated with, endorsed by, or connected to Fashion Nova, LLC.
+            </p>
+            <p className="bg-gray-50 p-4 rounded-sm border border-gray-100">
+              Are you impressed with this build and looking to create a world-class e-commerce store or digital experience?
+            </p>
           </div>
 
           <div className="w-full space-y-4">
-            <input 
-              type="email" 
-              placeholder="Email" 
-              className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:border-black"
-            />
-            <div className="flex items-start text-left gap-3">
-              <input type="checkbox" className="mt-1 accent-black" defaultChecked />
-              <p className="text-[10px] leading-tight text-gray-500">
-                Yes! Sign me up to receive Email Notifications from Fashion Nova with the latest deals, sales and updates. I agree to Fashion Nova's <span className="underline cursor-pointer">Terms of Service</span> and <span className="underline cursor-pointer">Privacy Policy</span>.
-              </p>
-            </div>
-            <button className="w-full bg-black text-white py-4 font-bold text-lg uppercase tracking-wider hover:bg-zinc-800 transition-colors">
-              Get My Offer
-            </button>
+            <a 
+              href="mailto:hi@gbemisolaoyeniyi.com"
+              className="block w-full bg-black text-white py-4 font-black text-sm uppercase tracking-widest hover:bg-zinc-800 transition-colors text-center"
+            >
+              Contact Me: hi@gbemisolaoyeniyi.com
+            </a>
             <button 
               onClick={onClose}
-              className="text-sm font-bold underline decoration-2 underline-offset-4 uppercase cursor-pointer block mx-auto pt-2"
+              className="text-xs font-black underline decoration-2 underline-offset-4 uppercase cursor-pointer block mx-auto pt-2"
             >
-              I Will Pay Full Price
+              Continue Exploring
             </button>
           </div>
 
-          <p className="mt-8 text-[9px] text-gray-400 leading-tight">
-            *Offer can only be redeemed by new subscribers. By signing up, you agree to receive recurring marketing emails from Fashion Nova at the email address used when signing up. Consent is not a condition of any purchase. <span className="underline cursor-pointer">Terms and Conditions</span>
+          <p className="mt-8 text-[9px] text-gray-400 leading-tight italic">
+            Developed by Gbemisola Oyeniyi. All brands and trademarks are property of their respective owners.
           </p>
         </div>
 
@@ -79,9 +57,10 @@ const PromoPopup: React.FC<PromoPopupProps> = ({ onClose }) => {
         <div className="hidden md:block w-1/2 relative">
           <img 
             src={ASSETS.POPUP_IMG} 
-            alt="Promotion" 
-            className="w-full h-full object-cover"
+            alt="Fashion Clone" 
+            className="w-full h-full object-cover grayscale-[20%]"
           />
+          <div className="absolute inset-0 bg-black/10"></div>
         </div>
       </div>
     </div>

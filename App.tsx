@@ -12,6 +12,16 @@ const App: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('For You');
 
   useEffect(() => {
+    const titles = [
+      "Fashion Nova | Fashion Online for Women, Men, Kids & Beauty",
+      "🔥 Hurry, sizes are selling fast.."
+    ];
+    let i = 0;
+    const interval = setInterval(() => {
+      i = (i + 1) % titles.length;
+      document.title = titles[i];
+    }, 3000);
+
     const handleScroll = () => {
       const dismissed = localStorage.getItem('promo_dismissed');
       if (!dismissed && window.scrollY > 400) {
@@ -21,7 +31,10 @@ const App: React.FC = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearInterval(interval);
+    };
   }, []);
 
   const handleClosePopup = () => {
