@@ -36,25 +36,25 @@ const Footer: React.FC = () => {
     <footer className="bg-black text-white pt-10 md:pt-20 pb-10">
       <div className="max-w-[1600px] mx-auto px-4">
         
-        {/* Main Footer Grid Layout Adjusted */}
+        {/* Main Footer Grid Layout: 5 columns in one row on large screens */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 mb-16">
           
-          {/* Column 1: App Download (Space but less than Col 4) */}
-          <div className="lg:col-span-3">
+          {/* Column 1: App Download (Space but less than Col 5) - Hidden on Mobile */}
+          <div className="hidden lg:block lg:col-span-3">
             <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-8 text-left">Shop Faster With The App</h4>
             <div className="flex flex-row items-center gap-3 lg:gap-4 justify-start">
-              <a href="#" className="w-28 md:w-32 hover:opacity-80 transition-opacity">
+              <a href="#" className="w-28 md:w-32 hover:opacity-100 transition-opacity grayscale opacity-60">
                 <img src={ASSETS.APP_STORE} alt="Download on App Store" className="w-full h-auto" />
               </a>
-              <a href="#" className="w-28 md:w-32 hover:opacity-80 transition-opacity">
+              <a href="#" className="w-28 md:w-32 hover:opacity-100 transition-opacity grayscale opacity-60">
                 <img src={ASSETS.GOOGLE_PLAY} alt="Get it on Google Play" className="w-full h-auto" />
               </a>
             </div>
           </div>
 
-          {/* Desktop Only Nav Columns: Slim (Col 2 & 3) */}
-          <div className="hidden lg:block lg:col-span-1.5">
-            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-8">{sections[0].title}</h4>
+          {/* Column 2: Get Help (Slim) */}
+          <div className="hidden lg:block lg:col-span-1">
+            <h4 className="text-[11px] font-black tracking-[0.2em] mb-8 text-white">{sections[0].title}</h4>
             <ul className="space-y-4">
               {sections[0].links.map(link => (
                 <li key={link}>
@@ -63,9 +63,10 @@ const Footer: React.FC = () => {
               ))}
             </ul>
           </div>
-          
-          <div className="hidden lg:block lg:col-span-1.5">
-            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-8">{sections[1].title}</h4>
+
+          {/* Column 3: Company (Slim) */}
+          <div className="hidden lg:block lg:col-span-1">
+            <h4 className="text-[11px] font-black tracking-[0.2em] mb-8 text-white">{sections[1].title}</h4>
             <ul className="space-y-4">
               {sections[1].links.map(link => (
                 <li key={link}>
@@ -73,19 +74,21 @@ const Footer: React.FC = () => {
                 </li>
               ))}
             </ul>
-            <div className="mt-8">
-              <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-4">{sections[2].title}</h4>
-              <ul className="space-y-4">
-                {sections[2].links.map(link => (
-                  <li key={link}>
-                    <a href="#" className="text-[13px] text-gray-400 hover:text-white transition-colors">{link}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
 
-          {/* Mobile Accordions */}
+          {/* Column 4: Quick Links (Slim) */}
+          <div className="hidden lg:block lg:col-span-1">
+            <h4 className="text-[11px] font-black tracking-[0.2em] mb-8 text-white">{sections[2].title}</h4>
+            <ul className="space-y-4">
+              {sections[2].links.map(link => (
+                <li key={link}>
+                  <a href="#" className="text-[13px] text-gray-400 hover:text-white transition-colors">{link}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Mobile Accordions - Headers are Uppercase here */}
           <div className="lg:hidden flex flex-col w-full">
             {sections.map(section => (
               <div key={section.id} className="border-b border-zinc-800">
@@ -109,7 +112,7 @@ const Footer: React.FC = () => {
             ))}
           </div>
 
-          {/* Last Column: Sign Up (Most space) */}
+          {/* Column 5: Sign Up (Most space) */}
           <div className="lg:col-span-6 flex flex-col">
             <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-8">Sign Up For Discounts + Updates</h4>
             <div className="relative mb-6">

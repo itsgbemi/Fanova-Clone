@@ -51,7 +51,7 @@ const App: React.FC = () => {
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className="fixed bottom-6 right-6 z-40 bg-white border border-gray-300 w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-gray-50 transition-all"
       >
-        <i className="fa-solid fa-chevron-up"></i>
+        <i className="fa-solid fa-chevron-up text-black"></i>
       </button>
 
       {showPopup && <PromoPopup onClose={handleClosePopup} />}
